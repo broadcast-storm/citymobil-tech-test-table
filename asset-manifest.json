@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/citymobil-tech-test-table/static/css/main.420ff50d.chunk.css",
+    "main.js": "/citymobil-tech-test-table/static/js/main.d72063f7.chunk.js",
+    "main.js.map": "/citymobil-tech-test-table/static/js/main.d72063f7.chunk.js.map",
+    "runtime-main.js": "/citymobil-tech-test-table/static/js/runtime-main.18280012.js",
+    "runtime-main.js.map": "/citymobil-tech-test-table/static/js/runtime-main.18280012.js.map",
+    "static/js/2.1062b0fb.chunk.js": "/citymobil-tech-test-table/static/js/2.1062b0fb.chunk.js",
+    "static/js/2.1062b0fb.chunk.js.map": "/citymobil-tech-test-table/static/js/2.1062b0fb.chunk.js.map",
+    "index.html": "/citymobil-tech-test-table/index.html",
+    "static/css/main.420ff50d.chunk.css.map": "/citymobil-tech-test-table/static/css/main.420ff50d.chunk.css.map",
+    "static/js/2.1062b0fb.chunk.js.LICENSE.txt": "/citymobil-tech-test-table/static/js/2.1062b0fb.chunk.js.LICENSE.txt",
+    "static/media/arrow.c0991123.svg": "/citymobil-tech-test-table/static/media/arrow.c0991123.svg",
+    "static/media/close.17a94979.svg": "/citymobil-tech-test-table/static/media/close.17a94979.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.18280012.js",
+    "static/js/2.1062b0fb.chunk.js",
+    "static/css/main.420ff50d.chunk.css",
+    "static/js/main.d72063f7.chunk.js"
+  ]
+}
