@@ -1,0 +1,28 @@
+.sidebar{
+  background-color: #e3e3e3;
+  height: 100%;
+  width: 20%;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__text{
+    font-size: 36px;
+    font-weight: 800;
+    color: #707070;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sidebar{
+    &__text{
+      font-size: 22px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar{
+    display: none;
+  }
+}

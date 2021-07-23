@@ -1,0 +1,19 @@
+.table{
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid #C6D1DD;
+  td, th {
+    width: 2%;
+  }
+  .head{
+    background-color: #F0F2F4;
+    &__name{
+      padding: 16px 0;
+      color: #7B8395;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid #C6D1DD;
+    }
+  }
+}
