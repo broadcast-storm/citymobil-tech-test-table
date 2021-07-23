@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useState } from 'react';
+import CloseSvg from '../../../Icons/close.svg';
 import styles from './styles.module.scss';
 
 const SearchCarInput = ({ className, onChange }) => {
@@ -10,16 +11,27 @@ const SearchCarInput = ({ className, onChange }) => {
   const updateText = (event) => {
     setSearchText(event.target.value);
   };
+  const clearText = () => {
+    setSearchText('');
+    onChange('');
+  };
   return (
-    <div className={styles['search-container']}>
-      <input
-        type="text"
-        className={classNames(styles['search-container__input'], className)}
-        id="car-search"
-        placeholder="Поиск"
-        value={searchText}
-        onChange={updateText}
-      />
+    <div className={classNames(styles['search-container'], className)}>
+      <div className={styles['search-container__input-back']}>
+        <input
+          type="text"
+          className={styles['search-container__input']}
+          id="car-search"
+          placeholder="Поиск"
+          value={searchText}
+          onChange={updateText}
+        />
+        {searchText.length > 0 ? (
+          <button className={styles.close} type="button" onClick={clearText}>
+            <img src={CloseSvg} alt="закрыть" />
+          </button>
+        ) : null}
+      </div>
 
       <button
         className={styles['search-container__button']}

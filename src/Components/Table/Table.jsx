@@ -10,7 +10,7 @@ const Table = () => {
   const [isError, setIsError] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [isInfoLoading, setIsInfoLoading] = useState(true);
-  const [selectedCarId, setSelectedCarId] = useState(null);
+  const [selectedCarText, setSelectedCarText] = useState(null);
 
   useEffect(async () => {
     try {
@@ -40,17 +40,19 @@ const Table = () => {
           <div className={styles.tableBack}>
             <CarsList
               className={styles.table}
-              selectCar={setSelectedCarId}
+              selectCar={setSelectedCarText}
               carsInfo={carsInfo}
               tariffsList={tariffsList}
               searchText={searchText}
             />
           </div>
-          {selectedCarId ? (
-            <div className={styles['selected-car']}>
-              <span className={styles['selected-car__text']}>
-                Выбран автомобиль Audi A4 2005 года выпуска
-              </span>
+          {selectedCarText ? (
+            <div className={styles['selected-car-back']}>
+              <div className={styles['selected-car']}>
+                <span className={styles['selected-car__text']}>
+                  {selectedCarText}
+                </span>
+              </div>
             </div>
           ) : null}
         </>

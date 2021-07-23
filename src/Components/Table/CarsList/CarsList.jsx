@@ -1,11 +1,27 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import SortByAlpha from '../SortByAlpha';
+import ArrowSvg from '../../../Icons/arrow.svg';
 
-const CarsList = ({ className, tariffsList, carsInfo, searchText }) => {
+const CarsList = ({
+  className,
+  tariffsList,
+  carsInfo,
+  searchText,
+  selectCar,
+}) => {
   const [isAlphabetically, setIsAlphabetically] = useState(true);
+  const [selectedCarId, setSelectedCarId] = useState(null);
+
+  useEffect(() => {
+    selectCar(null);
+    setSelectedCarId(null);
+  }, [searchText]);
+
   const changeAlphabetically = () => {
+    selectCar(null);
+    setSelectedCarId(null);
     setIsAlphabetically((prev) => !prev);
   };
   const generateUniqueKey = (item, index) => {
@@ -16,15 +32,49 @@ const CarsList = ({ className, tariffsList, carsInfo, searchText }) => {
     return `${index} ${item.mark} ${item.model} ${result}`;
   };
 
+  const selectItem = (item, index) => {
+    if (index === selectedCarId) {
+      selectCar(null);
+      setSelectedCarId(null);
+    } else {
+      const yearsSet = new Set();
+      Object.keys(item.tariffs).forEach((key) => {
+        yearsSet.add(item.tariffs[key].year);
+      });
+      let years = '';
+      yearsSet.forEach((value) => {
+        years += `${value} `;
+      });
+      selectCar(
+        `Выбран автомобиль ${item.mark} ${item.model} ${years} ${
+          years.length > 5 ? 'годов' : 'года'
+        } выпуска`,
+      );
+      setSelectedCarId(index);
+    }
+  };
+
   return (
     <table className={classNames(styles.table, className)}>
       <tbody>
         <tr className={styles.head}>
           <th
-            className={classNames(styles.head__name, styles.textLeft)}
+            className={classNames(
+              styles.head__name,
+              styles.textLeft,
+              styles.pointer,
+            )}
             onClick={changeAlphabetically}
           >
-            Марка и модель {isAlphabetically ? 'да' : 'нет'}
+            Марка и модель{' '}
+            <img
+              src={ArrowSvg}
+              alt="порядок по алфавиту"
+              className={classNames(
+                styles.alphaPic,
+                !isAlphabetically ? styles.reversed : null,
+              )}
+            />
           </th>
           {tariffsList.map((item) => (
             <th className={styles.head__name} key={item}>
@@ -39,7 +89,14 @@ const CarsList = ({ className, tariffsList, carsInfo, searchText }) => {
             ),
           )
           .map((item, ind) => (
-            <tr key={generateUniqueKey(item, ind)}>
+            <tr
+              key={generateUniqueKey(item, ind)}
+              className={classNames(
+                styles.infoTr,
+                selectedCarId === ind ? styles['infoTr-clicked'] : null,
+              )}
+              onClick={() => selectItem(item, ind)}
+            >
               <td
                 className={classNames(styles.infoTd, styles.textLeft)}
               >{`${item.mark} ${item.model}`}</td>

@@ -1,10 +1,10 @@
 .table{
   width: 100%;
+  min-width: 700px;
   table-layout: fixed;
   border-collapse: collapse;
   border: 1px solid #C6D1DD;
-  height: 400px;
-  overflow-y: auto;
+  overflow: auto;
   td, th {
     width: 2%;
   }
@@ -16,16 +16,33 @@
       font-size: 12px;
       font-weight: 500;
       border: 1px solid #C6D1DD;
+
+      .alphaPic{
+        width: 12px;
+      }
+      .reversed{
+        transform: rotate(180deg);
+      }
     }
   }
-  .infoTd{
-    padding: 12px;
-    font-size: 12px;
-    box-sizing: border-box;
-    border: 1px solid #C6D1DD;
-    text-align: center;
+  .infoTr{
+    cursor: pointer;
+    .infoTd{
+      padding: 12px;
+      font-size: 12px;
+      box-sizing: border-box;
+      border: 1px solid #C6D1DD;
+      text-align: center;
+    }
   }
+  .infoTr-clicked, .infoTr:hover{
+    background-color: #d7e0e7;
+  }
+
   .textLeft{
-    text-align: left;
+    text-align: left !important;
+  }
+  .pointer{
+    cursor: pointer;
   }
 }
