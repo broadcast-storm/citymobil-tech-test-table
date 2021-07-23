@@ -8,17 +8,17 @@ const Table = () => {
   const [carsInfo, setCarsInfo] = useState(null);
   const [tariffsList, setTariffsList] = useState(null);
   const [isError, setIsError] = useState(false);
+  const [searchText, setSearchText] = useState('');
   const [isInfoLoading, setIsInfoLoading] = useState(true);
   const [selectedCarId, setSelectedCarId] = useState(null);
+
   useEffect(async () => {
     try {
       const result = await axios.get('https://city-mobil.ru/api/cars');
-      console.log(result.data);
       setCarsInfo(result.data.cars);
       setTariffsList(result.data.tariffs_list);
       setIsInfoLoading(false);
     } catch (e) {
-      console.log(e);
       setIsError(true);
       setIsInfoLoading(false);
     }
@@ -32,13 +32,20 @@ const Table = () => {
         <span>Произошла ошибка, перезагрузите страницу</span>
       ) : (
         <>
-          <SearchCarInput className={styles['input-container']} />
-          <CarsList
-            className={styles.table}
-            selectCar={setSelectedCarId}
-            carsInfo={carsInfo}
-            tariffsList={tariffsList}
+          <SearchCarInput
+            className={styles['input-container']}
+            searchCar={setSearchText}
+            onChange={setSearchText}
           />
+          <div className={styles.tableBack}>
+            <CarsList
+              className={styles.table}
+              selectCar={setSelectedCarId}
+              carsInfo={carsInfo}
+              tariffsList={tariffsList}
+              searchText={searchText}
+            />
+          </div>
           {selectedCarId ? (
             <div className={styles['selected-car']}>
               <span className={styles['selected-car__text']}>

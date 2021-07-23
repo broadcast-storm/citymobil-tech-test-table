@@ -3,17 +3,29 @@
   table-layout: fixed;
   border-collapse: collapse;
   border: 1px solid #C6D1DD;
+  height: 400px;
+  overflow-y: auto;
   td, th {
     width: 2%;
   }
   .head{
     background-color: #F0F2F4;
     &__name{
-      padding: 16px 0;
+      padding: 16px 12px;
       color: #7B8395;
       font-size: 12px;
       font-weight: 500;
       border: 1px solid #C6D1DD;
     }
+  }
+  .infoTd{
+    padding: 12px;
+    font-size: 12px;
+    box-sizing: border-box;
+    border: 1px solid #C6D1DD;
+    text-align: center;
+  }
+  .textLeft{
+    text-align: left;
   }
 }
